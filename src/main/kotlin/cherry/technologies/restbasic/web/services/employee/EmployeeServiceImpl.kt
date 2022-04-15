@@ -2,10 +2,10 @@ package cherry.technologies.restbasic.web.services.employee
 
 import cherry.technologies.restbasic.domain.Employee
 import cherry.technologies.restbasic.web.repositories.employee.EmployeeRepository
-import lombok.extern.slf4j.Slf4j
+import org.springframework.stereotype.Service
 import java.util.*
 
-@Slf4j
+@Service
 class EmployeeServiceImpl(val employeeRepository: EmployeeRepository):EmployeeService {
     override fun getAllEmployees(): List<Employee> = employeeRepository.findAll()
 
