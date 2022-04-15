@@ -24,5 +24,6 @@ abstract class Base(
         @Column(updatable = false)
         open val createdAt: Timestamp?,
         @UpdateTimestamp
-        open val lastModifiedAt: Timestamp?
+        open val lastModifiedAt: Timestamp?,
+        open val deleted: Boolean?
 )

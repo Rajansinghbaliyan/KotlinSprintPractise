@@ -10,6 +10,8 @@ data class Employee(
         override val version:Int?,
         override val createdAt:Timestamp?,
         override val lastModifiedAt:Timestamp?,
+        override val deleted: Boolean? = false,
         val firstName:String,
         val lastName:String,
-        val location:String ): Base(id, version, createdAt, lastModifiedAt)
+        val location:String,
+        ): Base(id, version, createdAt, lastModifiedAt, deleted)
