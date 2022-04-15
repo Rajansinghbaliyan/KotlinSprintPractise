@@ -8,13 +8,13 @@ import java.util.*
 
 @Service
 class EmployeeServiceImpl(val employeeRepository: EmployeeRepository):EmployeeService {
-    override fun getAllEmployees(): List<Employee> = employeeRepository.findAll()
+    override fun getAllEmployees() = employeeRepository.findAll()
 
-    override fun getById(id: UUID): Employee = employeeRepository.getById(id)
+    override fun getById(id: UUID) = employeeRepository.getById(id)
 
-    override fun save(employee: Employee): Employee = employeeRepository.save(employee.copy(id = null))
+    override fun save(employee: Employee) = employeeRepository.save(employee.copy(id = null))
 
-    override fun update(employee: Employee): Employee = with(employee) {
+    override fun update(employee: Employee) = with(employee) {
         val empFromDb = id?.let { getById(it) } ?: throw NotFoundException("Please provide the correct id.")
         employeeRepository.save(employee.copy(id = empFromDb.id))
     }

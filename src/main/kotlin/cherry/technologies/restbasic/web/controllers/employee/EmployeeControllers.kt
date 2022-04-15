@@ -24,6 +24,11 @@ class EmployeeControllers(val employeeService: EmployeeService) {
             .status(HttpStatus.CREATED)
             .body(employeeService.save(employee))
 
+    @PutMapping("/")
+    fun update(@RequestBody employee: Employee) = ResponseEntity
+            .status(HttpStatus.OK)
+            .body(employeeService.update(employee))
+
     @DeleteMapping("/{id}")
     fun delete(@PathVariable id:UUID) = ResponseEntity
             .ok()
