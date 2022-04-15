@@ -7,15 +7,16 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class EmployeeServiceImpl(val employeeRepository: EmployeeRepository):EmployeeService {
-    override fun getAllEmployees() = employeeRepository.findAll()
+class EmployeeServiceImpl(val employeeRepository: EmployeeRepository) : EmployeeService {
+    override fun getAllEmployees(): MutableList<Employee> = employeeRepository.findAll()
 
     override fun getById(id: UUID) = employeeRepository.getById(id)
 
     override fun save(employee: Employee) = employeeRepository.save(employee.copy(id = null))
 
     override fun update(employee: Employee) = with(employee) {
-        val empFromDb = id?.let { getById(it) } ?: throw NotFoundException("Please provide the correct id.")
+        val empFromDb = id?.let { getById(it) }
+            ?: throw NotFoundException("Please provide the correct id.")
         employeeRepository.save(employee.copy(id = empFromDb.id))
     }
 
